@@ -2,6 +2,9 @@ from django.db import models
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
+
+# Managers
+from .managers import UserManager
 # Create your models here.
 
 
@@ -19,8 +22,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         unique=True
     )
     email = models.EmailField(max_length=254)
-    nombres = models.CharField(max_length=50)
-    apellidos = models.CharField(max_length=50)
+    nombres = models.CharField(max_length=50, blank=True)
+    apellidos = models.CharField(max_length=50, blank=True)
     genero = models.CharField(
         max_length=1,
         choices=GENDER_CHOISES,
@@ -28,6 +31,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     USERNAME_FIELD = 'username'
+    objects = UserManager()
 
     def get_short_name(self):
         return self.username
