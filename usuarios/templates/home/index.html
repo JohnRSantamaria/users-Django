@@ -9,10 +9,10 @@
 
     <body>
         <h1>Panel de usuario</h1>
-        <h3>Bienvenidos: </h3>
+        <h3>Bienvenido: {{user}} </h3>
         <ul>
             <li>
-                <a href="#" id="">
+                <a href="{% url 'users_app:user-logout' %}" id="">
                     Cerrar Sesion
                 </a>
 
