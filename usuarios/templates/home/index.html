@@ -10,6 +10,7 @@
     <body>
         <h1>Panel de usuario</h1>
         <h3>Bienvenido: {{user}} </h3>
+        {{ fecha }}
         <ul>
             <li>
                 <a href="{% url 'users_app:user-logout' %}" id="">
@@ -17,7 +18,7 @@
                 </a>
 
             </li>
-            <li> <a href="#" id="">
+            <li> <a href="{% url 'users_app:user-update' %}" id="">
                     Actulizar datos
                 </a></li>
         </ul>

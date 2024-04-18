@@ -7,12 +7,13 @@ from django.contrib.auth.models import BaseUserManager
 
 class UserManager(BaseUserManager, models.Manager):
 
-    def _create_user(self, username, email, password, is_staff, is_superuser, **extra_fields):
+    def _create_user(self, username, email, password, is_staff, is_superuser, is_active, **extra_fields):
         user = self.model(
             username=username,
             email=email,
             is_staff=is_staff,
             is_superuser=is_superuser,
+            is_active=is_active,
             **extra_fields
         )
         # Encriptando la password
@@ -30,5 +31,12 @@ class UserManager(BaseUserManager, models.Manager):
             password,
             is_staff=True,
             is_superuser=True,
-            **extra_fields
+            is_active=True,
+            ** extra_fields
         )
+
+    def code_validation(self, id_user, code_registro):
+        if self.filter(id=id_user, code_registro=code_registro).exists():
+            return True
+        else:
+            return False

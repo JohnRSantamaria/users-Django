@@ -9,5 +9,11 @@ urlpatterns = [
         'panel/',
         views.HomePage.as_view(),
         name="panel"
+    ),
+    path(
+        'test/',
+        views.TemplatePruebaMixin.as_view(),
+        name='test'
     )
+
 ]

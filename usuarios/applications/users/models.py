@@ -29,8 +29,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         choices=GENDER_CHOISES,
         blank=True
     )
+    code_registro = models.CharField(
+        max_length=6, blank=True, default='000000 ')
+    # son parte de AbstractBaseUser
     is_staff = models.BooleanField(default=False)
-    
+    is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'username'
 
